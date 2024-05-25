@@ -1,15 +1,13 @@
-# frozen_string_literal: true
+# Gemfile
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
-
-gem 'sqlite3', '~> 1.4'
 gem 'sinatra'
-gem 'activerecord'
+gem 'activerecord', '~> 6.1'
 gem 'sinatra-activerecord'
-gem 'sinatra-contrib'
+gem 'rake'
+gem 'sqlite3', '~> 1.4'
+gem 'sinatra-contrib'  # This includes sinatra/reloader
+gem 'mutex_m'          # To address the mutex_m warning
+gem 'bigdecimal'       # To address the bigdecimal warning
 
-
-group :development do
-  gem 'tux'
-end
-# gem "rails"
+gem "rackup", "~> 2.1"

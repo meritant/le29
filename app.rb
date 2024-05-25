@@ -1,15 +1,18 @@
-#encoding: utf-8
-require 'rubygems'
+# app.rb
+require 'bundler/setup'
 require 'sinatra'
-require 'sinatra/reloader'
-# require 'sqlite3'
 require 'sinatra/activerecord'
+require 'sinatra/reloader' if development?
 
-set :database, "sqlite3:barbershop.db"
+set :database_file, 'config/database.yml'
 
-class Client < ActiveRecord::Base
+class User < ActiveRecord::Base
+end
+
+class Barber < ActiveRecord::Base
 end
 
 get '/' do
-	erb "ITS WORKING!!!"
+	@users = User.all
+	erb :index
 end
