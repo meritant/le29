@@ -15,11 +15,16 @@ class User < ActiveRecord::Base
 end
 
 class Client < ActiveRecord::Base
+	validates :name, { presence: true }
+	validates :phone, { presence: true }
+	validates :datestamp, { presence: true }
+	validates :color, { presence: true }
+
+
 end
 class Barber < ActiveRecord::Base
 end
-class Audit < ActiveRecord::Base
-end
+
 get '/' do
 	erb :index
 end
@@ -43,8 +48,11 @@ end
 post '/book' do
 
 	c = Client.new params[:client]
-	c.save
-	erb 'Thank you. Your request has been submitted!'
+	if c.save
+		erb 'Thank you. Your request has been submitted!'
 
-
+	else
+		@error = c.errors.full_messages.first
+		erb :book
+		end
 end
