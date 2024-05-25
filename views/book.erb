@@ -1,32 +1,35 @@
 <form action="/book" method="post">
+
   <div class="mb-3">
+
     <label class="form-label">Your Name</label>
-    <input type="text" name="username" value="<%= @username %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="client[name]" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We need to know how to call you.</div>
   </div>
+
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Phone #</label>
-    <input type="text" name="phone" value="<%= @phone %>" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="client[phone]" value="" class="form-control" id="exampleInputPassword1">
   </div>
 
   <div class="mb-3">
     <label for="datetimepicker">Chose Date and Time:</label>
-    <input type="text" name="datetime" value="<%= @datetime %>" class="form-control" >
+    <input type="text" name="client[datestamp]" value="" class="form-control" >
   </div>
 
 
-  <select class="form-select" name="dresser" aria-label="Default select example">
-    # Generating list from DB
-    <option value="<%= @dresser %>">Choose your dresser</option>
+<!--  <select class="form-select" name="dresser" aria-label="Default select example">-->
+<!--    # Generating list from DB-->
+<!--    <option value="<%#= @dresser %>">Choose your dresser</option>-->
 
-    <% @users.each do |barber| %>
-      <option <%= @dresser == barber['name'] ? 'selected' : '' %>><%= barber['name'] %></option>
-    <% end %>
+    <%# @users.each do |barber| %>
+<!--      <option <%#= @dresser == barber['name'] ? 'selected' : '' %>><%#= barber['name'] %></option>-->
+    <%# end %>
 
-  </select>
+<!--  </select>-->
   <br />
   <label class="form-label">Choose your color:</label>
-  <select name="colorpicker">
+  <select name="client[color]">
     <option value="#7bd148">Green</option>
     <option value="#5484ed">Bold blue</option>
     <option value="#a4bdfc">Blue</option>

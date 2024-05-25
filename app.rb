@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
 end
 
 class Client < ActiveRecord::Base
-
 end
 class Barber < ActiveRecord::Base
 end
@@ -43,20 +42,9 @@ end
 
 post '/book' do
 
-	@name = params[:name]
-	@phone = params[:phone]
-	@dresser = params[:dresser]
-	@datetime = params[:datetime]
-	@color = params[:colorpicker]
-
-	c = Client.new
-
-	c.name = @name
-	c.phone = @phone
-	c.datestamp = @datetime
-	c.barber = @dresser
-	c.color = @color
-		erb 'Thank you. Your request has been submitted!'
+	c = Client.new params[:client]
+	c.save
+	erb 'Thank you. Your request has been submitted!'
 
 
 end
