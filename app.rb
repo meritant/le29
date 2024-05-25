@@ -42,17 +42,18 @@ post '/new' do
 end
 
 get '/book' do
+	@c = Client.new
 	erb :book
 end
 
 post '/book' do
 
-	c = Client.new params[:client]
-	if c.save
+	@c = Client.new params[:client]
+	if @c.save
 		erb 'Thank you. Your request has been submitted!'
 
 	else
-		@error = c.errors.full_messages.first
+		@error = @c.errors.full_messages.first
 		erb :book
 		end
 end
