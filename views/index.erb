@@ -1,7 +1,9 @@
 
-<h1>Users</h1>
+<h1>Barbers</h1>
 <ul>
-  <% @users.each do |user| %>
-    <li><%= user.name %>, <%=user.created_at %> </li>
+  <% @barber.each do |user| %>
+    <p>
+    <a href="/barber/<%= user.id %>"> <li><%= user.name %>, <%=user.created_at %> </li></a>
+    </p>
   <% end %>
 </ul>

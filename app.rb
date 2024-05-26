@@ -8,14 +8,14 @@ set :database_file, 'config/database.yml'
 
 
 before do
-	@users = Barber.order 'created_at DESC'
+	@barber = Barber.all
 end
 
 class User < ActiveRecord::Base
 end
 
 class Client < ActiveRecord::Base
-	validates :name, { presence: true }
+	validates :name, presence: true, length: { minimum: 3 }
 	validates :phone, { presence: true }
 	validates :datestamp, { presence: true }
 	validates :color, { presence: true }
@@ -56,4 +56,11 @@ post '/book' do
 		@error = @c.errors.full_messages.first
 		erb :book
 		end
+end
+
+get '/barber/:id' do
+
+@dresser = Barber.find params[:id]
+
+	erb :barber
 end
