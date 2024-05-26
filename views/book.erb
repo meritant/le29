@@ -17,17 +17,19 @@
     <input type="text" name="client[datestamp]" value="<%= @c.datestamp  %>" class="form-control" >
   </div>
 
+  <br>
+  <select class="form-select" name="client[barber]" aria-label="Default select example">
+    # Generating list from DB
+    <option value="<%= @dresser %>">Choose your dresser</option>
 
-<!--  <select class="form-select" name="dresser" aria-label="Default select example">-->
-<!--    # Generating list from DB-->
-<!--    <option value="<%#= @dresser %>">Choose your dresser</option>-->
+    <% @barber.each do |barber| %>
+      <option <%= @dresser == barber['name'] ? 'selected' : '' %>><%= barber['name'] %></option>
+    <% end %>
 
-    <%# @users.each do |barber| %>
-<!--      <option <%#= @dresser == barber['name'] ? 'selected' : '' %>><%#= barber['name'] %></option>-->
-    <%# end %>
-
-<!--  </select>-->
+  </select>
   <br />
+  <br />
+
   <label class="form-label">Choose your color:</label>
   <select name="client[color]">
     <option value="#7bd148">Green</option>
